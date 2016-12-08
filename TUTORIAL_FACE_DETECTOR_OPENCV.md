@@ -47,7 +47,7 @@ Type the following in a new console:
     
 This will open a GUI where you can select a topic_name with type `sensor_msgs/Image`. Select the `image_color` stream and see if it works. It will most probably have a low rate and delayed due to wifi but that's ok.
 
-## Now start the tutorial
+## Create ROS package with executable
 
 We are going to make a face detector that runs on your platform and uses the remote camera. First, create a package (http://wiki.ros.org/ROS/Tutorials/catkin/CreatingPackage) in your catkin workspace:
 
@@ -74,12 +74,22 @@ Now run the executable via the `rosrun` command:
 
     rosrun opencv_face_detector opencv_face_detector.py
 
+## Create ROS node with a subscriber
+
 The current python executable is not a ROS node yet, let us connect it to ROS (make it a Node). Implement the Subscriber example of the following tutorial: http://wiki.ros.org/ROS/Tutorials/WritingPublisherSubscriber(python)
 
 Now change the `std_msgs/String` to `sensor_msgs/Image` and print the image. It will for sure be a lot of information.
+
+## CVBridge
 
 Now interpret this binary data as an image using `opencv` and `cvBridge` as shown here: http://wiki.ros.org/cv_bridge/Tutorials/ConvertingBetweenROSImagesAndOpenCVImagesPython
 
 Display the image using your own image view of opencv: `cv2.imshow('name', image); cv2.waitKey(10)`
 
+## Face detector
+
 Now that we have the image in opencv format, we can implement a `HaarClassifier` for face detection: http://docs.opencv.org/trunk/d7/d8b/tutorial_py_face_detection.html
+
+## Example ROS package
+
+[opencv_face_detector](opencv_face_detector)
